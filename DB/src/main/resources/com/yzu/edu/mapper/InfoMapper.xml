@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.InfoMapper">
+    <resultMap id="InfoMap" type="com.yzu.edu.pojo.Info">
+        <result column="stu_id" property="stuId"/>
+        <result column="site_id" property="siteId"/>
+        <result column="hall_id" property="hallId"/>
+    </resultMap>
+
+    <insert id="insertSingle">
+        insert into info value (#{admission}, #{time}, #{stuId}, #{siteId}, #{hallId}, #{seat});
+    </insert>
+    <delete id="deleteAll">
+        delete
+        from info
+        where true;
+    </delete>
+
+    <select id="selectAll" resultMap="InfoMap">
+        select *
+        from info;
+    </select>
+    <select id="selectSingle" resultMap="InfoMap">
+        select *
+        from info
+        where admission = #{admisson};
+    </select>
+
+
+</mapper>

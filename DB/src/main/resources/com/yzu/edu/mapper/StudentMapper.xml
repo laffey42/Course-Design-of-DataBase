@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.StudentMapper">
+    <resultMap id="StudentMap" type="com.yzu.edu.pojo.Student">
+        <result column="stu_id" property="stuId"/>
+        <result column="stu_name" property="stuName"/>
+        <result column="lan_id" property="lanId"/>
+    </resultMap>
+    <insert id="insertSingle">
+        insert into student
+        values (#{stuId}, #{stuName}, #{lanId});
+    </insert>
+    <update id="updateSingle">
+        update student
+        <set>
+            <if test="stuId != null">
+                stu_id = #{stuId},
+            </if>
+            <if test="stuName != null">
+                stu_name = #{stuName},
+            </if>
+            <if test="lanId != null">
+                lan_id = #{lanId}
+            </if>
+        </set>
+        where stu_id = #{originId};
+    </update>
+    <delete id="deleteSingle">
+        delete
+        from student
+        where stu_id = #{stuId};
+    </delete>
+
+    <delete id="deleteAll">
+        delete
+        from student
+        where true;
+    </delete>
+
+    <select id="selectAll" resultMap="StudentMap">
+        select *
+        from student
+        order by lan_id;
+    </select>
+    <select id="selectSingle" resultMap="StudentMap">
+        select *
+        from student
+        where stu_id = #{stuId};
+    </select>
+    <select id="selectNumPerLan" resultType="integer">
+        select count(lan_id)
+        from student
+        group by lan_id;
+    </select>
+    <select id="selectAllByLanId" resultMap="StudentMap">
+        select *
+        from student
+        where lan_id = #{lanId};
+    </select>
+    <select id="selectAllLanId" resultType="java.lang.String">
+        select distinct lan_id
+        from student;
+    </select>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.ScoreMapper">
+    <resultMap id="ScoreMap" type="com.yzu.edu.pojo.Score">
+        <result column="score_total" property="scoreTotal"/>
+    </resultMap>
+
+    <insert id="insertSingle">
+        insert into score(admission, score01, score02, score_total)
+        values (#{admission}, #{score01}, #{score02}, #{scoreTotal});
+    </insert>
+
+    <update id="updateSingle">
+        update score
+        set score01     = #{score01},
+            score02     = #{score02},
+            score_total = #{scoreTotal}
+        where admission = #{admission};
+    </update>
+
+
+    <delete id="deleteAll">
+        delete
+        from score
+        where true;
+    </delete>
+
+    <select id="selectSingle" resultMap="ScoreMap">
+        select *
+        from score
+        where admission = #{admission}
+    </select>
+
+    <select id="selectAll" resultMap="ScoreMap">
+        select *
+        from score
+        order by score_total desc, score01 desc, score02 desc;
+    </select>
+
+
+</mapper>

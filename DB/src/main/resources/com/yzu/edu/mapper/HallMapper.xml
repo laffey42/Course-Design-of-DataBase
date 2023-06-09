@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.HallMapper">
+    <resultMap id="HallMap" type="com.yzu.edu.pojo.Hall">
+        <result column="site_id" property="siteId"/>
+        <result column="hall_id" property="hallId"/>
+        <result column="lan_id" property="lanId"/>
+    </resultMap>
+
+    <insert id="insertSingle">
+        insert into hall value (#{siteId}, #{hallId}, #{lanId});
+    </insert>
+
+    <delete id="deleteAll">
+        delete from hall where true;
+    </delete>
+
+
+</mapper>

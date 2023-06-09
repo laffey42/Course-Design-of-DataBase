@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.SiteMapper">
+    <resultMap id="SiteMap" type="com.yzu.edu.pojo.Site">
+        <result column="site_id" property="siteId"/>
+        <result column="site_name" property="siteName"/>
+    </resultMap>
+    <update id="updateSingle">
+        update site
+        <set>
+            <if test="siteId != null and siteId != ''">
+                site_id = #{siteId},
+            </if>
+            <if test="siteName != null and siteName != ''">
+                site_name = #{siteName}
+            </if>
+        </set>
+        where site_id = #{originId}
+    </update>
+    <select id="selectAll" resultMap="SiteMap">
+        select *
+        from site;
+    </select>
+    <select id="selectSingle" resultMap="SiteMap">
+        select *
+        from site
+        where site_id = #{siteId};
+    </select>
+
+</mapper>
+

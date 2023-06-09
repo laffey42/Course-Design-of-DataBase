@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.UserMapper">
+    <update id="updateSingle">
+        update user
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password}
+            </if>
+        </set>
+        where uid = #{uid};
+    </update>
+
+    <select id="selectSingle" resultType="com.yzu.edu.pojo.User">
+        select *
+        from user
+        where username = #{username}
+          and password = #{password};
+    </select>
+
+</mapper>
