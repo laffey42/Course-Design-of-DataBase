@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [27/May/2023:15:01:05 +0800] "GET /DB HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [27/May/2023:15:01:05 +0800] "GET /DB/ HTTP/1.1" 200 612 http-bio-8080-exec-3 33
+0:0:0:0:0:0:0:1 - - [27/May/2023:15:01:05 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [27/May/2023:15:01:08 +0800] "POST /DB/servlet/user/loginServlet HTTP/1.1" 200 615 http-bio-8080-exec-5 580
