@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzu.edu.mapper.LanguageMapper">
+    <resultMap id="LanguageMap" type="com.yzu.edu.pojo.Language">
+        <result column="lan_id" property="lanId"/>
+        <result column="lan_name" property="lanName"/>
+    </resultMap>
+
+    <select id="selectNumOfLan" resultType="java.lang.Integer">
+        select count(*) from language;
+    </select>
+
+
+</mapper>
